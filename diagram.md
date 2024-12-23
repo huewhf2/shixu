@@ -1,7 +1,7 @@
 # FPS Multiplayer Game Sequence Diagram
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#000000', 'primaryColor': '#FFFFFF', 'edgeLabelBackground': '#000000', 'tertiaryColor': '#FFFFFF', 'primaryTextColor': '#FFFFFF', 'labelTextColor': '#000000', 'sequence': {'participantBkg': '#FFFFFF', 'participantTextColor': '#000000', 'participantBorder': '#FFFFFF', 'actorBkg': '#FFFFFF', 'actorTextColor': '#000000', 'actorBorder': '#FFFFFF'}}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#000000', 'primaryColor': '#FFFFFF', 'edgeLabelBackground': '#000000', 'tertiaryColor': '#FFFFFF', 'primaryTextColor': '#FFFFFF', 'labelTextColor': '#FFFFFF', 'sequence': {'participantBkg': '#FFFFFF', 'participantTextColor': '#000000', 'participantBorder': '#FFFFFF', 'actorBkg': '#FFFFFF', 'actorTextColor': '#000000', 'actorBorder': '#FFFFFF'}}}}%%
 sequenceDiagram
     participant Player1 as 玩家 1
     participant Player2 as 玩家 2
