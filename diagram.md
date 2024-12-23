@@ -1,34 +1,21 @@
-# 基于Unity实现的多人联机FPS游戏时序图
-
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FFFFFF', 'primaryColor': '#000000', 'edgeLabelBackground': '#FFFFFF', 'tertiaryColor': '#000000', 'primaryTextColor': '#000000', 'labelTextColor': '#000000', 'sequence': {'participantBkg': '#FFFFFF', 'participantTextColor': '#000000', 'participantBorder': '#000000', 'actorBkg': '#FFFFFF', 'actorTextColor': '#000000', 'actorBorder': '#000000'}}}}%%
 sequenceDiagram
-    participant Player1 as 玩家 1
-    participant Player2 as 玩家 2
+    participant Player1 as 玩家1
     participant Server as 游戏服务器
-    participant DB as 数据库
+    participant Player2 as 玩家2
 
-    Player1->>Server: 连接到服务器
-    Server->>DB: 验证玩家 1
-    DB-->>Server: 验证成功
-    Server-->>Player1: 连接确认
+    Player1 ->> Server: 发起连接请求
+    Server -->> Player1: 验证连接信息，允许连接，返回连接成功响应
+    Player1 ->> Server: 发送玩家角色初始化信息（位置、外观等）
+    Server ->> Player2: 转发玩家1的初始化信息给其他在线玩家（如玩家2）
+    Player2 ->> Server: 发送自身角色初始化信息
+    Server ->> Player1: 转发玩家2的初始化信息给玩家1
 
-    Player2->>Server: 连接到服务器
-    Server->>DB: 验证玩家 2
-    DB-->>Server: 验证成功
-    Server-->>Player2: 连接确认
+    loop 游戏进行中
+        Player1 ->> Server: 发送操作信息（移动、射击等）
+        Server ->> Player2: 同步玩家1的操作信息给其他玩家
+        Player2 ->> Server: 发送操作信息（移动、射击等）
+        Server ->> Player1: 同步玩家2的操作信息给玩家1
+    end
 
-    Player1->>Server: 发送玩家状态（位置、健康等）
-    Player2->>Server: 发送玩家状态（位置、健康等）
-
-    Server->>Player1: 更新其他玩家状态
-    Server->>Player2: 更新其他玩家状态
-
-    Player1->>Server: 射击
-    Server->>Player2: 通知击中
-    Player2->>Server: 发送更新状态（健康等）
-    Server->>Player1: 更新玩家 2 的状态
-
-    Player1->>Server: 断开连接
-    Server->>DB: 保存玩家 1 的状态
-    Server-->>Player1: 断开连接确认
+    Player1 ->> Server: 发送断开连接请求
+    Server -->> Player1: 确认断开连接，执行清理相关操作
