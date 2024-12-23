@@ -3,10 +3,10 @@
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'background': '#FFFFFF', 'primaryColor': '#000000', 'edgeLabelBackground': '#FFFFFF', 'tertiaryColor': '#000000', 'primaryTextColor': '#000000', 'labelTextColor': '#000000', 'sequence': {'participantBkg': '#FFFFFF', 'participantTextColor': '#000000', 'participantBorder': '#000000', 'actorBkg': '#FFFFFF', 'actorTextColor': '#000000', 'actorBorder': '#000000'}}}}%%
 sequenceDiagram
-    participant Player1 as 玩家 1
-    participant Player2 as 玩家 2
-    participant Server as 游戏服务器
-    participant DB as 数据库
+    participant Player1 as 玩家 1#rect(#FFFFFF)
+    participant Player2 as 玩家 2#rect(#FFFFFF)
+    participant Server as 游戏服务器#rect(#FFFFFF)
+    participant DB as 数据库#rect(#FFFFFF)
 
     Player1->>Server: 连接到服务器
     Server->>DB: 验证玩家 1
