@@ -7,7 +7,7 @@ sequenceDiagram
     participant Player2 as 玩家 2
     participant Server as 游戏服务器
     participant DB as 数据库
-    
+
     Player1->>Server: 连接到服务器
     Server->>DB: 验证玩家 1
     DB-->>Server: 验证成功
