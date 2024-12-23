@@ -1,12 +1,15 @@
 # FPS Multiplayer Game Sequence Diagram
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'background': '#FFFFFF', 'primaryColor': '#000000', 'edgeLabelBackground': '#FFFFFF', 'tertiaryColor': '#000000', 'primaryTextColor': '#000000', 'labelTextColor': '#000000', 'sequence': {'participantBkg': '#FFFFFF', 'participantTextColor': '#000000', 'participantBorder': '#000000', 'actorBkg': '#FFFFFF', 'actorTextColor': '#000000', 'actorBorder': '#000000'}}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'background': '#000000', 'primaryColor': '#FFFFFF', 'edgeLabelBackground': '#000000', 'tertiaryColor': '#000000', 'primaryTextColor': '#FFFFFF', 'labelTextColor': '#FFFFFF', 'sequence': {'participantBkg': '#000000', 'participantTextColor': '#FFFFFF', 'participantBorder': '#FFFFFF', 'actorBkg': '#000000', 'actorTextColor': '#FFFFFF', 'actorBorder': '#FFFFFF'}}}}%%
 sequenceDiagram
+    classDef whiteBackground fill:#FFFFFF,stroke:#000000,stroke-width:2px,color:#000000;
     participant Player1 as 玩家 1
     participant Player2 as 玩家 2
     participant Server as 游戏服务器
     participant DB as 数据库
+    
+    class Player1 whiteBackground;
 
     Player1->>Server: 连接到服务器
     Server->>DB: 验证玩家 1
